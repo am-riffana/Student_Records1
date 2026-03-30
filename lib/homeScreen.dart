@@ -4,11 +4,9 @@ import 'student_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   late Box<Student> studentBox;
 
@@ -17,17 +15,14 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     studentBox = Hive.box<Student>('studentBox');
   }
-
   void addSampleStudent() {
     final student = Student(
       name: 'Rifana Sherin',
       age: 18,
       course: 'Flutter Developer',
     );
-
     studentBox.add(student);
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,10 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, box, _) {
           if (box.isEmpty) {
             return  Center(
-              child: Text('No student records'),
+              child: Text('No Student records'),
             );
           }
-
           return ListView.builder(
             itemCount: box.length,
             itemBuilder: (context, index) {
